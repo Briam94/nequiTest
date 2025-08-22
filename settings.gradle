@@ -1,0 +1,15 @@
+pluginManagement {
+    plugins {
+        id 'org.springframework.boot' version '3.5.5'
+        id 'java'
+    }
+}
+
+rootProject.name = 'pactual'
+
+include ':application'
+project(':application').projectDir = file('./src/application')
+include ':domain'
+project(':domain').projectDir = file('./src/domain')
+include ':infrastructure'
+project(':infrastructure').projectDir = file('./src/infrastructure')
