@@ -22,4 +22,10 @@ public class ProductControllerImp implements ProductController {
         return new ResponseEntity<>(
                 productUseCase.saveNewProduct(productRequestDto.getName(), productRequestDto.getStock()), HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Object> deleteProduct(String productName) {
+        productUseCase.deleteProduct(productName);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

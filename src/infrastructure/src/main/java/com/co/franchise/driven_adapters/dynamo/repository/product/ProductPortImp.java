@@ -25,4 +25,9 @@ public class ProductPortImp implements ProductServicePort {
         log.info("getting product: {}", productName);
         return productMapper.productEntityToModel(productRepository.getProduct(productName));
     }
+
+    public void deleteProduct(String productName) {
+        log.info("product to remove: {}", productName);
+        productRepository.deleteProduct(productName);
+    }
 }

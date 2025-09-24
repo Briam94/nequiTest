@@ -6,4 +6,5 @@ public interface ProductRepository {
 
     void saveNewProduct(ProductEntity productEntity);
     ProductEntity getProduct(String name);
+    void deleteProduct(String productName);
 }
