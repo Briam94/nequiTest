@@ -57,6 +57,18 @@ public class ProductRepositoryImp implements ProductRepository {
         }
     }
 
+    @Override
+    public void updateProduct(ProductEntity productEntity) {
+        log.info("Update product: {}", productEntity.getName());
+        try {
+            DynamoDbTable<ProductEntity> table = getTable();
+            table.updateItem(productEntity);
+        } catch (Exception e) {
+            log.error(GETTING_TABLE_ERROR, e.getMessage());
+            throw new BusinessException(STATUS_CODE_400, API_RESPONSE_400, STATUS_CODE_400, DYNAMO_DB_ERROR);
+        }
+    }
+
 
     public DynamoDbTable<ProductEntity> getTable() {
         log.info("Getting table: {}", PRODUCT_TABLE_NAME);

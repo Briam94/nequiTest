@@ -38,11 +38,16 @@ public class ProductUseCase {
     }
 
     public boolean isProductInBd(String productName) {
+        log.info("product to validate in data base: {}", productName);
         ProductModel productModel = productServicePort.getProduct(productName);
         return !Objects.isNull(productModel);
     }
 
     public void deleteProduct(String productName) {
         productServicePort.deleteProduct(productName);
+    }
+
+    public void updateProduct(String productName, int productStock) {
+        productServicePort.updateProduct(new ProductModel(productName, productStock));
     }
 }
