@@ -6,4 +6,5 @@ public interface ProductServicePort {
 
     void saveNewProduct(ProductModel productModel);
     ProductModel getProduct(String productName);
+    void deleteProduct(String productName);
 }

@@ -41,4 +41,8 @@ public class ProductUseCase {
         ProductModel productModel = productServicePort.getProduct(productName);
         return !Objects.isNull(productModel);
     }
+
+    public void deleteProduct(String productName) {
+        productServicePort.deleteProduct(productName);
+    }
 }
