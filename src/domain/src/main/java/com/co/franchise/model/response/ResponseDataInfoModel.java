@@ -5,6 +5,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ResponseDataInfoModel {
 
     private String code;

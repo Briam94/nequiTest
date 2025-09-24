@@ -14,4 +14,7 @@ public interface ProductController {
     @PutMapping(value = DELETE_PRODUCT_PATH)
     public ResponseEntity<Object> deleteProduct(
             @RequestHeader(name = HEADER_PRODUCT_NAME_DELETE) String productName);
+
+    @PutMapping(value = UPDATE_PRODUCT_PATH)
+    public ResponseEntity<Object> updateProduct(@RequestBody ProductRequestDto productRequestDto);
 }

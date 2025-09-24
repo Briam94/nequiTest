@@ -1,5 +1,6 @@
 package com.co.franchise.driven_adapters.dynamo.repository.product;
 
+import com.co.franchise.driven_adapters.dynamo.entity.ProductEntity;
 import com.co.franchise.driven_adapters.dynamo.mappers.ProductMapper;
 import com.co.franchise.driven_port.repository.ProductServicePort;
 import com.co.franchise.model.ProductModel;
@@ -29,5 +30,10 @@ public class ProductPortImp implements ProductServicePort {
     public void deleteProduct(String productName) {
         log.info("product to remove: {}", productName);
         productRepository.deleteProduct(productName);
+    }
+
+    public void updateProduct(ProductModel productModel) {
+        log.info("product to update: {} with the new stock: {}", productModel.getName(), productModel.getStock());
+        productRepository.updateProduct(productMapper.productModelToEntity(productModel));
     }
 }
