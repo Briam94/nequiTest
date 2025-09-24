@@ -20,9 +20,4 @@ public class ProductEntity {
     public String getName() {
         return name;
     }
-
-    @DynamoDbSortKey
-    public int getStock() {
-        return stock;
-    }
 }

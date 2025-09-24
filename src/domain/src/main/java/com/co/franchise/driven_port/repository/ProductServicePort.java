@@ -5,4 +5,5 @@ import com.co.franchise.model.ProductModel;
 public interface ProductServicePort {
 
     void saveNewProduct(ProductModel productModel);
+    ProductModel getProduct(String productName);
 }

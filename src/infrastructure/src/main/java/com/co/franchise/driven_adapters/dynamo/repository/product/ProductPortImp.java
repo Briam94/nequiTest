@@ -20,4 +20,9 @@ public class ProductPortImp implements ProductServicePort {
         log.info("Product to save, name: {}, with stock: {}", productModel.getName(), productModel.getStock());
         productRepository.saveNewProduct(productMapper.productModelToEntity(productModel));
     }
+
+    public ProductModel getProduct(String productName) {
+        log.info("getting product: {}", productName);
+        return productMapper.productEntityToModel(productRepository.getProduct(productName));
+    }
 }
