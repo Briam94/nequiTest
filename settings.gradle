@@ -5,7 +5,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'pactual'
+rootProject.name = 'franchise'
 
 include ':application'
 project(':application').projectDir = file('./src/application')

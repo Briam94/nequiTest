@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
 }
 
-group = 'com.co.bgt'
+group = 'com.co.franchise'
 version = '1.0-SNAPSHOT'
 
 repositories {
