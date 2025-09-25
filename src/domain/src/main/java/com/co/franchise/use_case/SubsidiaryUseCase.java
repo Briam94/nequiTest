@@ -69,4 +69,26 @@ public class SubsidiaryUseCase {
         responseDataModel.setResponse(responseDataInfoModel);
         return responseDataModel;
     }
+
+    public ResponseDataModel removeProductFromSubsidiary(String subsidiaryId, ProductSubsidiaryModel productSubsidiaryModel) {
+        log.info("Remove {} from {}", productSubsidiaryModel.getName(), subsidiaryId);
+        ResponseDataModel responseDataModel = new ResponseDataModel();
+        ResponseDataInfoModel responseDataInfoModel = new ResponseDataInfoModel();
+        SubsidiaryModel subsidiaryModel = subsidiaryServicePort.getSubsidiary(subsidiaryId);
+        if (Objects.isNull(subsidiaryModel)) {
+            log.info("the subsidiary {} is not in the data base.", subsidiaryId);
+            responseDataInfoModel.setCode(String.valueOf(HttpStatus.NOT_FOUND.value()));
+            responseDataInfoModel.setMessage(SUBSIDIARY_IS_NOT_IN_DB);
+            responseDataModel.setResponse(responseDataInfoModel);
+            return responseDataModel;
+        }
+        subsidiaryModel.getProducts().remove(productSubsidiaryModel);
+        log.info("the product {} was removed", productSubsidiaryModel.getName());
+        subsidiaryServicePort.updateSubsidiary(subsidiaryModel);
+        responseDataInfoModel.setCode(String.valueOf(HttpStatus.OK.value()));
+        responseDataInfoModel.setMessage(ADDED_NEW_PRODUCT_SUBSIDIARY_SUCCESSFULLY);
+        responseDataModel.setResponse(responseDataInfoModel);
+        return responseDataModel;
+    }
+
 }
