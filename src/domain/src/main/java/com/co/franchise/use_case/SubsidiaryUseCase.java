@@ -1,6 +1,7 @@
 package com.co.franchise.use_case;
 
 import com.co.franchise.driven_port.repository.SubsidiaryServicePort;
+import com.co.franchise.model.FranchiseSubsidiaryModel;
 import com.co.franchise.model.ProductSubsidiaryModel;
 import com.co.franchise.model.SubsidiaryModel;
 import com.co.franchise.model.response.ResponseDataInfoModel;
@@ -9,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -89,6 +91,14 @@ public class SubsidiaryUseCase {
         responseDataInfoModel.setMessage(ADDED_NEW_PRODUCT_SUBSIDIARY_SUCCESSFULLY);
         responseDataModel.setResponse(responseDataInfoModel);
         return responseDataModel;
+    }
+
+    public List<SubsidiaryModel> getSubsidiaryByFranchise(List<FranchiseSubsidiaryModel> subsidiariesId) {
+        List<SubsidiaryModel> subsidiaries = new ArrayList<>();
+        for (FranchiseSubsidiaryModel subsidiary: subsidiariesId) {
+            subsidiaries.add(subsidiaryServicePort.getSubsidiary(subsidiary.getSubsidiaryId()));
+        }
+        return subsidiaries;
     }
 
 }

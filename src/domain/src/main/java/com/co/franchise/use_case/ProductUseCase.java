@@ -2,12 +2,16 @@ package com.co.franchise.use_case;
 
 import com.co.franchise.driven_port.repository.ProductServicePort;
 import com.co.franchise.model.ProductModel;
+import com.co.franchise.model.ProductSubsidiaryModel;
 import com.co.franchise.model.response.ResponseDataInfoModel;
 import com.co.franchise.model.response.ResponseDataModel;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 
 import static com.co.franchise.utils.Constants.NEW_PRODUCT_IS_IN_DB;
@@ -49,5 +53,21 @@ public class ProductUseCase {
 
     public void updateProduct(String productName, int productStock) {
         productServicePort.updateProduct(new ProductModel(productName, productStock));
+    }
+
+    public List<ProductModel> getProductsBySubsidiary(List<ProductSubsidiaryModel> productsName) {
+        List<ProductModel> products = new ArrayList<>();
+        for (ProductSubsidiaryModel productName: productsName) {
+            products.add(productServicePort.getProduct(productName.getName()));
+        }
+        return products;
+    }
+
+    public ProductModel getProductMaxStock(List<ProductSubsidiaryModel> productsName) {
+        List<ProductModel> products = new ArrayList<>();
+        for (ProductSubsidiaryModel productName: productsName) {
+            products.add(productServicePort.getProduct(productName.getName()));
+        }
+        return products.stream().max(Comparator.comparing(ProductModel::getStock)).get();
     }
 }

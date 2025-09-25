@@ -17,8 +17,10 @@ public class RouterConstants {
     public static final String FRANCHISE_REQUEST_PATH = "/franchise";
     public static final String NEW_FRANCHISE_PATH = "/new";
     public static final String ADD_SUBSIDIARY_FRANCHISE_PATH = "/add";
+    public static final String GET_ALL_FRANCHISE_PATH = "/getAll";
 
     public static final String HEADER_PRODUCT_NAME_DELETE = "product_name";
+    public static final String HEADER_FRANCHISE_ID_DELETE = "franchise_id";
 
 
     public static final String UPDATE_PRODUCT_STOCK_MESSAGE = "The stock product was update successfully.";

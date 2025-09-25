@@ -36,4 +36,11 @@ public class FranchiseControllerImp implements FranchiseController {
                         franchiseMapper.franchiseSubsidiaryDtoToModel(franchiseRequestDto.getSubsidiary())),
                 HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Object> getAllFranchise(String franchiseId) {
+        return new ResponseEntity<>(
+                franchiseUseCase.productsFranchise(franchiseId),
+                HttpStatus.OK);
+    }
 }

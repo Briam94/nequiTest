@@ -1,17 +1,16 @@
 package com.co.franchise.use_case;
 
 import com.co.franchise.driven_port.repository.FranchiseServicePort;
+import com.co.franchise.driven_port.repository.ProductServicePort;
 import com.co.franchise.driven_port.repository.SubsidiaryServicePort;
-import com.co.franchise.model.FranchiseModel;
-import com.co.franchise.model.FranchiseSubsidiaryModel;
-import com.co.franchise.model.ProductModel;
-import com.co.franchise.model.SubsidiaryModel;
+import com.co.franchise.model.*;
 import com.co.franchise.model.response.ResponseDataInfoModel;
 import com.co.franchise.model.response.ResponseDataModel;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -23,7 +22,9 @@ import static com.co.franchise.utils.Constants.*;
 public class FranchiseUseCase {
 
     private final SubsidiaryServicePort subsidiaryServicePort;
+    private final SubsidiaryUseCase subsidiaryUseCase;
     private final FranchiseServicePort franchiseServicePort;
+    private final ProductUseCase productUseCase;
 
     public ResponseDataModel saveFranchise(String franchiseName, List<FranchiseSubsidiaryModel> subsidiaries) {
         log.info("Saving new franchise: {}", franchiseName);
@@ -68,5 +69,20 @@ public class FranchiseUseCase {
         log.info("subsidiary to validate in data base: {}", subsidiaryId);
         SubsidiaryModel subsidiaryModel = subsidiaryServicePort.getSubsidiary(subsidiaryId);
         return !Objects.isNull(subsidiaryModel);
+    }
+
+    public FranchiseAllSubsidiaryModel productsFranchise(String franchiseId) {
+        FranchiseModel franchiseModel = franchiseServicePort.getFranchise(franchiseId);
+        List<SubsidiaryModel> subsidiariesModel = subsidiaryUseCase.getSubsidiaryByFranchise(franchiseModel.getSubsidiaries());
+        List<SubsidiaryAllModel> subsidiaries = new ArrayList<>();
+        for (SubsidiaryModel subsidiaryModel: subsidiariesModel) {
+            SubsidiaryAllModel subsidiaryAllModel = new SubsidiaryAllModel(subsidiaryModel.getSubsidiaryId(), subsidiaryModel.getSubsidiaryName(),
+                    productUseCase.getProductMaxStock(subsidiaryModel.getProducts()),
+                    productUseCase.getProductsBySubsidiary(subsidiaryModel.getProducts()));
+            subsidiaries.add(subsidiaryAllModel);
+        }
+        return new FranchiseAllSubsidiaryModel(
+                franchiseModel.getFranchiseId(), franchiseModel.getFranchiseName(), subsidiaries
+        );
     }
 }
