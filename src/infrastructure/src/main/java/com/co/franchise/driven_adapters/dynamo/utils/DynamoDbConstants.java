@@ -4,6 +4,7 @@ public class DynamoDbConstants {
 
     public static final String PRODUCT_TABLE_NAME = "product";
     public static final String SUBSIDIARY_TABLE_NAME = "subsidiary";
+    public static final String FRANCHISE_TABLE_NAME = "franchise";
 
     public static final String GETTING_TABLE_ERROR = "An error occurred while trying to query the table in Dynamo.";
 

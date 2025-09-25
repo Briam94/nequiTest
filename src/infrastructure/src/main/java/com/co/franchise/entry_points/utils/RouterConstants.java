@@ -14,6 +14,9 @@ public class RouterConstants {
     public static final String REMOVE_PRODUCT_SUBSIDIARY_PATH = "/remove";
 
 
+    public static final String FRANCHISE_REQUEST_PATH = "/franchise";
+    public static final String NEW_FRANCHISE_PATH = "/new";
+
     public static final String HEADER_PRODUCT_NAME_DELETE = "product_name";
 
 
