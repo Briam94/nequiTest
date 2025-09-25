@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateFranchiseDto {
+public class UpdateDataDto {
 
-    private String franchiseId;
-    private String newFranchiseName;
+    private String dataId;
+    private String newName;
 }

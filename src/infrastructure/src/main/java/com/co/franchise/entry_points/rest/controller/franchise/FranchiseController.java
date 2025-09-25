@@ -2,7 +2,7 @@ package com.co.franchise.entry_points.rest.controller.franchise;
 
 import com.co.franchise.entry_points.rest.controller.dto.AddedSubsidiaryFranchiseRequestDto;
 import com.co.franchise.entry_points.rest.controller.dto.FranchiseRequestDto;
-import com.co.franchise.entry_points.rest.controller.dto.UpdateFranchiseDto;
+import com.co.franchise.entry_points.rest.controller.dto.UpdateDataDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +20,6 @@ public interface FranchiseController {
     public ResponseEntity<Object> getAllFranchise(@RequestHeader (name = HEADER_FRANCHISE_ID_DELETE) String franchiseId);
 
     @PutMapping(value = UPDATE_FRANCHISE_PATH)
-    public ResponseEntity<Object> updateFranchise(@RequestBody UpdateFranchiseDto updateFranchiseDto);
+    public ResponseEntity<Object> updateFranchise(@RequestBody UpdateDataDto updateDataDto);
 
 }
