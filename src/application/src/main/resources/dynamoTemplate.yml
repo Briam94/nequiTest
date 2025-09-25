@@ -1,0 +1,52 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Plantilla para crear tablas DynamoDB Product, Subsidiary y Franchise
+
+Resources:
+  ProductTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Product
+      AttributeDefinitions:
+        - AttributeName: name
+          AttributeType: S
+      KeySchema:
+        - AttributeName: name
+          KeyType: HASH
+      BillingMode: PAYPERREQUEST
+
+  SubsidiaryTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Subsidiary
+      AttributeDefinitions:
+        - AttributeName: subsidiaryId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: subsidiaryId
+          KeyType: HASH
+      BillingMode: PAYPERREQUEST
+
+  FranchiseTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Franchise
+      AttributeDefinitions:
+        - AttributeName: franchiseId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: franchiseId
+          KeyType: HASH
+      BillingMode: PAYPERREQUEST
+
+Outputs:
+  ProductTableName:
+    Description: Nombre de la tabla Product
+    Value: !Ref ProductTable
+
+  SubsidiaryTableName:
+    Description: Nombre de la tabla Subsidiary
+    Value: !Ref SubsidiaryTable
+
+  FranchiseTableName:
+    Description: Nombre de la tabla Franchise
+    Value: !Ref FranchiseTable
