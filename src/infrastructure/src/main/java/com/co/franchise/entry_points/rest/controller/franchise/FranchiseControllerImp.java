@@ -3,6 +3,7 @@ package com.co.franchise.entry_points.rest.controller.franchise;
 import com.co.franchise.driven_adapters.dynamo.mappers.FranchiseMapper;
 import com.co.franchise.entry_points.rest.controller.dto.AddedSubsidiaryFranchiseRequestDto;
 import com.co.franchise.entry_points.rest.controller.dto.FranchiseRequestDto;
+import com.co.franchise.entry_points.rest.controller.dto.UpdateFranchiseDto;
 import com.co.franchise.use_case.FranchiseUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -41,6 +42,13 @@ public class FranchiseControllerImp implements FranchiseController {
     public ResponseEntity<Object> getAllFranchise(String franchiseId) {
         return new ResponseEntity<>(
                 franchiseUseCase.productsFranchise(franchiseId),
+                HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Object> updateFranchise(UpdateFranchiseDto updateFranchiseDto) {
+        return new ResponseEntity<>(
+                franchiseUseCase.updateFranchiseName(updateFranchiseDto.getFranchiseId(), updateFranchiseDto.getNewFranchiseName()),
                 HttpStatus.OK);
     }
 }

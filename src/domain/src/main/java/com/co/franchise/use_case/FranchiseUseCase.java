@@ -85,4 +85,24 @@ public class FranchiseUseCase {
                 franchiseModel.getFranchiseId(), franchiseModel.getFranchiseName(), subsidiaries
         );
     }
+
+    public ResponseDataModel updateFranchiseName(String franchiseId, String newFranchiseName) {
+        ResponseDataModel responseDataModel = new ResponseDataModel();
+        ResponseDataInfoModel responseDataInfoModel = new ResponseDataInfoModel();
+        FranchiseModel franchiseModel = franchiseServicePort.getFranchise(franchiseId);
+        if (Objects.isNull(franchiseModel)) {
+            log.info("the franchise {} is not in the data base.", franchiseId);
+            responseDataInfoModel.setCode(String.valueOf(HttpStatus.NOT_FOUND.value()));
+            responseDataInfoModel.setMessage(FRANCHISE_IS_NOT_IN_DB);
+            responseDataModel.setResponse(responseDataInfoModel);
+            return responseDataModel;
+        }
+        log.info("franchise to update: {}, with new name: {}", franchiseModel.getFranchiseName(), newFranchiseName);
+        franchiseModel.setFranchiseName(newFranchiseName);
+        franchiseServicePort.updateFranchise(franchiseModel);
+        responseDataInfoModel.setCode(String.valueOf(HttpStatus.OK.value()));
+        responseDataInfoModel.setMessage(UPDATE_FRANCHISE_SUCCESSFULLY);
+        responseDataModel.setResponse(responseDataInfoModel);
+        return responseDataModel;
+    }
 }
