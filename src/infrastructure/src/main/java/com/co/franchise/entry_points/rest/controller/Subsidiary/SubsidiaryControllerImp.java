@@ -1,6 +1,7 @@
 package com.co.franchise.entry_points.rest.controller.Subsidiary;
 
 import com.co.franchise.driven_adapters.dynamo.mappers.ProductMapper;
+import com.co.franchise.entry_points.rest.controller.dto.AddedProductSubsidiaryDto;
 import com.co.franchise.entry_points.rest.controller.dto.SubsidiaryRequestDto;
 import com.co.franchise.use_case.SubsidiaryUseCase;
 import lombok.AllArgsConstructor;
@@ -24,5 +25,12 @@ public class SubsidiaryControllerImp implements SubsidiaryController {
         return new ResponseEntity<>(
                 subsidiaryUseCase.saveSubsidiary(subsidiaryRequestDto.getSubsidiaryName(),
                         productMapper.productRequestDtoListToModelList(subsidiaryRequestDto.getProducts())), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Object> addedNewProductToSubsidiary(AddedProductSubsidiaryDto addedProductSubsidiaryDto) {
+        return new ResponseEntity<>(
+                subsidiaryUseCase.addProductToSubsidiary(addedProductSubsidiaryDto.getSubsidiaryId(),
+                        productMapper.productSubsidiaryRequestDtoToProductSubsidiaryModel(addedProductSubsidiaryDto.getProduct())), HttpStatus.OK);
     }
 }

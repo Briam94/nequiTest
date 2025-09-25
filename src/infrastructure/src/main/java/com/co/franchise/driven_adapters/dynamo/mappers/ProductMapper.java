@@ -17,4 +17,5 @@ public interface ProductMapper {
     ProductEntity productModelToEntity(ProductModel productModel);
     ProductModel productEntityToModel(ProductEntity productEntity);
     List<ProductSubsidiaryModel> productRequestDtoListToModelList(List<ProductSubsidiaryRequestDto> products);
+    ProductSubsidiaryModel productSubsidiaryRequestDtoToProductSubsidiaryModel(ProductSubsidiaryRequestDto subsidiaryRequestDto);
 }
