@@ -20,4 +20,16 @@ public class SubsidiaryPortImp implements SubsidiaryServicePort {
         log.info("subsidiary to saved: {}", subsidiaryModel.getSubsidiaryName());
         subsidiaryRepository.saveSubsidiary(subsidiaryMapper.subsidiaryModelToEntity(subsidiaryModel));
     }
+
+    @Override
+    public void updateSubsidiary(SubsidiaryModel subsidiaryModel) {
+        log.info("subsidiary to update: {}", subsidiaryModel.getSubsidiaryName());
+        subsidiaryRepository.updateSubsidiary(subsidiaryMapper.subsidiaryModelToEntity(subsidiaryModel));
+    }
+
+    @Override
+    public SubsidiaryModel getSubsidiary(String subsidiaryId) {
+        log.info("subsidiary to get: {}", subsidiaryId);
+        return subsidiaryMapper.subsidiaryEntityToModel(subsidiaryRepository.getSubsidiary(subsidiaryId));
+    }
 }
