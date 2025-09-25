@@ -45,6 +45,25 @@ public class FranchiseUseCase {
         return responseDataModel;
     }
 
+    public ResponseDataModel addSubsidiaryToFranchise(String franchiseId, FranchiseSubsidiaryModel franchiseSubsidiaryModel) {
+        ResponseDataModel responseDataModel = new ResponseDataModel();
+        ResponseDataInfoModel responseDataInfoModel = new ResponseDataInfoModel();
+        FranchiseModel franchiseModel = franchiseServicePort.getFranchise(franchiseId);
+        if (Objects.isNull(franchiseModel)) {
+            log.info("the franchise {} is not in the data base.", franchiseId);
+            responseDataInfoModel.setCode(String.valueOf(HttpStatus.NOT_FOUND.value()));
+            responseDataInfoModel.setMessage(FRANCHISE_IS_NOT_IN_DB);
+            responseDataModel.setResponse(responseDataInfoModel);
+            return responseDataModel;
+        }
+        franchiseModel.getSubsidiaries().add(franchiseSubsidiaryModel);
+        franchiseServicePort.updateFranchise(franchiseModel);
+        responseDataInfoModel.setCode(String.valueOf(HttpStatus.OK.value()));
+        responseDataInfoModel.setMessage(ADDED_NEW_SUBSIDIARY_FRANCHISE_SUCCESSFULLY);
+        responseDataModel.setResponse(responseDataInfoModel);
+        return responseDataModel;
+    }
+
     public boolean isProductInBd(String subsidiaryId) {
         log.info("subsidiary to validate in data base: {}", subsidiaryId);
         SubsidiaryModel subsidiaryModel = subsidiaryServicePort.getSubsidiary(subsidiaryId);

@@ -1,6 +1,7 @@
 package com.co.franchise.entry_points.rest.controller.franchise;
 
 import com.co.franchise.driven_adapters.dynamo.mappers.FranchiseMapper;
+import com.co.franchise.entry_points.rest.controller.dto.AddedSubsidiaryFranchiseRequestDto;
 import com.co.franchise.entry_points.rest.controller.dto.FranchiseRequestDto;
 import com.co.franchise.use_case.FranchiseUseCase;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,14 @@ public class FranchiseControllerImp implements FranchiseController {
         return new ResponseEntity<>(
                 franchiseUseCase.saveFranchise(franchiseRequestDto.getFranchiseName(),
                         franchiseMapper.addedSubsidiaryFranchiseDtoListToFranchiseSubsidiaryModelList(franchiseRequestDto.getSubsidiaries())),
+                HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Object> addNewSubsidiaryFranchise(AddedSubsidiaryFranchiseRequestDto franchiseRequestDto) {
+        return new ResponseEntity<>(
+                franchiseUseCase.addSubsidiaryToFranchise(franchiseRequestDto.getFranchiseId(),
+                        franchiseMapper.franchiseSubsidiaryDtoToModel(franchiseRequestDto.getSubsidiary())),
                 HttpStatus.OK);
     }
 }
