@@ -1,5 +1,6 @@
 para ejecutar el proyecto en ambiente local se debe tener instalado previamente java 17 y un editor de codigo,
-este proyecto trae por defecto el servidor de tomcat.
+este proyecto trae por defecto el servidor de tomcat y esta alojado en una repositorio de github, la rama actualizada
+es la rama develop.
 
 la base de datos que se esta utilizando en dynamodb de amazon, se puede aprovicionar mediente
 el archivo dynamoTemplate en la carpeta resources dentro del modulo de application
