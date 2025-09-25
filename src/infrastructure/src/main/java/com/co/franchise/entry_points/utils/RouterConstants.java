@@ -8,6 +8,10 @@ public class RouterConstants {
     public static final String UPDATE_PRODUCT_PATH = "/update";
 
 
+    public static final String SUBSIDIARY_REQUEST_PATH = "/subsidiary";
+    public static final String NEW_SUBSIDIARY_PATH = "/add";
+
+
     public static final String HEADER_PRODUCT_NAME_DELETE = "product_name";
 
 

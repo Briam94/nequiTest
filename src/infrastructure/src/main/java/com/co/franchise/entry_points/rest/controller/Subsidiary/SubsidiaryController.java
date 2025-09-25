@@ -1,0 +1,14 @@
+package com.co.franchise.entry_points.rest.controller.Subsidiary;
+
+import com.co.franchise.entry_points.rest.controller.dto.SubsidiaryRequestDto;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import static com.co.franchise.entry_points.utils.RouterConstants.NEW_SUBSIDIARY_PATH;
+
+public interface SubsidiaryController {
+
+    @PostMapping(value = NEW_SUBSIDIARY_PATH)
+    public ResponseEntity<Object> saveNewSubsidiary(@RequestBody SubsidiaryRequestDto subsidiaryRequestDto);
+}
