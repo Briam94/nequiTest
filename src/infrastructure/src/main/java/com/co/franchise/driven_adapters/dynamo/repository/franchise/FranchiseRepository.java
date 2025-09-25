@@ -5,4 +5,6 @@ import com.co.franchise.driven_adapters.dynamo.entity.FranchiseEntity;
 public interface FranchiseRepository {
 
     void saveFranchise(FranchiseEntity franchiseEntity);
+    FranchiseEntity getFranchise(String franchiseId);
+    void updateFranchise(FranchiseEntity franchiseEntity);
 }

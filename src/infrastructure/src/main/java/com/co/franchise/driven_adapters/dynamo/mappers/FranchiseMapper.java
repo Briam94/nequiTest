@@ -17,4 +17,5 @@ public interface FranchiseMapper {
     FranchiseEntity franchiseModelToEntity(FranchiseModel franchiseModel);
     FranchiseModel franchiseEntityToModel(FranchiseEntity franchiseEntity);
     List<FranchiseSubsidiaryModel> addedSubsidiaryFranchiseDtoListToFranchiseSubsidiaryModelList(List<AddedSubsidiaryFranchiseDto> addedSubsidiaryFranchiseDto);
+    FranchiseSubsidiaryModel franchiseSubsidiaryDtoToModel(AddedSubsidiaryFranchiseDto addedSubsidiaryFranchiseDto);
 }

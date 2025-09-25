@@ -20,4 +20,16 @@ public class FranchisePortImp implements FranchiseServicePort {
         log.info("Franchise to save: {},", franchiseModel.getFranchiseName());
         franchiseRepository.saveFranchise(franchiseMapper.franchiseModelToEntity(franchiseModel));
     }
+
+    @Override
+    public FranchiseModel getFranchise(String franchiseId) {
+        log.info("getting franchise: {}", franchiseId);
+        return franchiseMapper.franchiseEntityToModel(franchiseRepository.getFranchise(franchiseId));
+    }
+
+    @Override
+    public void updateFranchise(FranchiseModel franchiseEntity) {
+        log.info("franchise to update: {}", franchiseEntity.getFranchiseName());
+        franchiseRepository.updateFranchise(franchiseMapper.franchiseModelToEntity(franchiseEntity));
+    }
 }
