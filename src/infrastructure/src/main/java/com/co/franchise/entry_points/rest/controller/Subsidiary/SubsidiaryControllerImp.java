@@ -33,4 +33,11 @@ public class SubsidiaryControllerImp implements SubsidiaryController {
                 subsidiaryUseCase.addProductToSubsidiary(addedProductSubsidiaryDto.getSubsidiaryId(),
                         productMapper.productSubsidiaryRequestDtoToProductSubsidiaryModel(addedProductSubsidiaryDto.getProduct())), HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Object> removeProductToSubsidiary(AddedProductSubsidiaryDto addedProductSubsidiaryDto) {
+        return new ResponseEntity<>(
+                subsidiaryUseCase.removeProductFromSubsidiary(addedProductSubsidiaryDto.getSubsidiaryId(),
+                        productMapper.productSubsidiaryRequestDtoToProductSubsidiaryModel(addedProductSubsidiaryDto.getProduct())), HttpStatus.OK);
+    }
 }
