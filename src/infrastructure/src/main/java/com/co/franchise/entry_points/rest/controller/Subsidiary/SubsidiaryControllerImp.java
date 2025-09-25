@@ -3,6 +3,7 @@ package com.co.franchise.entry_points.rest.controller.Subsidiary;
 import com.co.franchise.driven_adapters.dynamo.mappers.ProductMapper;
 import com.co.franchise.entry_points.rest.controller.dto.AddedProductSubsidiaryDto;
 import com.co.franchise.entry_points.rest.controller.dto.SubsidiaryRequestDto;
+import com.co.franchise.entry_points.rest.controller.dto.UpdateDataDto;
 import com.co.franchise.use_case.SubsidiaryUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -39,5 +40,10 @@ public class SubsidiaryControllerImp implements SubsidiaryController {
         return new ResponseEntity<>(
                 subsidiaryUseCase.removeProductFromSubsidiary(addedProductSubsidiaryDto.getSubsidiaryId(),
                         productMapper.productSubsidiaryRequestDtoToProductSubsidiaryModel(addedProductSubsidiaryDto.getProduct())), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Object> update(UpdateDataDto updateDataDto) {
+        return new ResponseEntity<>(subsidiaryUseCase.updateSubsidiary(updateDataDto.getDataId(), updateDataDto.getNewName()), HttpStatus.OK);
     }
 }

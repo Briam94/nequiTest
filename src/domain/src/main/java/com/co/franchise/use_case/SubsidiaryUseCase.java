@@ -101,4 +101,24 @@ public class SubsidiaryUseCase {
         return subsidiaries;
     }
 
+    public ResponseDataModel updateSubsidiary(String subsidiaryId, String newSubsidiaryName) {
+        ResponseDataModel responseDataModel = new ResponseDataModel();
+        ResponseDataInfoModel responseDataInfoModel = new ResponseDataInfoModel();
+        SubsidiaryModel subsidiaryModel = subsidiaryServicePort.getSubsidiary(subsidiaryId);
+        if (Objects.isNull(subsidiaryModel)) {
+            log.info("the subsidiary {} is not in the data base.", subsidiaryId);
+            responseDataInfoModel.setCode(String.valueOf(HttpStatus.NOT_FOUND.value()));
+            responseDataInfoModel.setMessage(SUBSIDIARY_IS_NOT_IN_DB);
+            responseDataModel.setResponse(responseDataInfoModel);
+            return responseDataModel;
+        }
+        log.info("subsidiary to update: {}, with new name: {}", subsidiaryModel.getSubsidiaryName(), newSubsidiaryName);
+        subsidiaryModel.setSubsidiaryName(newSubsidiaryName);
+        subsidiaryServicePort.updateSubsidiary(subsidiaryModel);
+        responseDataInfoModel.setCode(String.valueOf(HttpStatus.OK.value()));
+        responseDataInfoModel.setMessage(UPDATE_SUBSIDIARY_SUCCESSFULLY);
+        responseDataModel.setResponse(responseDataInfoModel);
+        return responseDataModel;
+    }
+
 }

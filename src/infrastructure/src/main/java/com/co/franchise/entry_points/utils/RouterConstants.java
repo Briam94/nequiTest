@@ -12,6 +12,7 @@ public class RouterConstants {
     public static final String NEW_SUBSIDIARY_PATH = "/new";
     public static final String ADDED_NEW_PRODUCT_SUBSIDIARY_PATH = "/add";
     public static final String REMOVE_PRODUCT_SUBSIDIARY_PATH = "/remove";
+    public static final String UPDATE_SUBSIDIARY_PATH = "/update";
 
 
     public static final String FRANCHISE_REQUEST_PATH = "/franchise";

@@ -11,5 +11,6 @@ public class Constants {
     public static final String SAVE_NEW_FRANCHISE_SUCCESSFULLY = "The new franchise was saved successfully.";
     public static final String UPDATE_FRANCHISE_SUCCESSFULLY = "The franchise has been updated successfully.";
     public static final String ADDED_NEW_PRODUCT_SUBSIDIARY_SUCCESSFULLY = "The new product was added successfully to the subsidiary.";
+    public static final String UPDATE_SUBSIDIARY_SUCCESSFULLY = "The subsidiary has been updated successfully.";
     public static final String ADDED_NEW_SUBSIDIARY_FRANCHISE_SUCCESSFULLY = "The new subsidiary was added successfully to the franchise.";
 }
