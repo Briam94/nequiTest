@@ -3,6 +3,7 @@ package com.co.franchise.driven_adapters.dynamo.utils;
 public class DynamoDbConstants {
 
     public static final String PRODUCT_TABLE_NAME = "product";
+    public static final String SUBSIDIARY_TABLE_NAME = "subsidiary";
 
     public static final String GETTING_TABLE_ERROR = "An error occurred while trying to query the table in Dynamo.";
 

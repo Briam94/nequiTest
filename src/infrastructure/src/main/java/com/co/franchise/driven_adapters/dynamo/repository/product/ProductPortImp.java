@@ -1,6 +1,5 @@
 package com.co.franchise.driven_adapters.dynamo.repository.product;
 
-import com.co.franchise.driven_adapters.dynamo.entity.ProductEntity;
 import com.co.franchise.driven_adapters.dynamo.mappers.ProductMapper;
 import com.co.franchise.driven_port.repository.ProductServicePort;
 import com.co.franchise.model.ProductModel;
